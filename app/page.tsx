@@ -1,104 +1,101 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import VirtualGallery from "./components/VirtualGallery";
+import HeroSection from "./components/HeroSection";
 
 export default function Home() {
   // This would normally be fetched from a CMS or API
   const featuredWorks = [
-    { id: 1, title: "Homecoming", image: "/homecoming.jpg", category: "Art" },
-    { id: 2, title: "Metaplane", image: "/metaplane.jpg", category: "Art" },
-    { id: 3, title: "My World My Rules", image: "/my-world-my-rules.jpg", category: "Art" },
-    { id: 4, title: "Stance of Flow", image: "/stance-of-flow.jpg", category: "Art" },
-    { id: 5, title: "What Is That", image: "/what-is-that.jpg", category: "Art" },
+    { 
+      id: 1, 
+      title: "Homecoming", 
+      image: "/image/homecoming.jpg", 
+      category: "Digital Art",
+      description: "An exploration of identity and belonging, this piece reflects on the journey back to one's roots and the complex emotions that accompany it."
+    },
+    { 
+      id: 2, 
+      title: "Metaplane", 
+      image: "/image/metaplane.jpg", 
+      category: "Digital Art",
+      description: "Inspired by the concept of digital realms and alternate realities, Metaplane visualizes the intersection between physical and virtual worlds."
+    },
+    { 
+      id: 3, 
+      title: "My World My Rules", 
+      image: "/image/my-world-my-rules.jpg", 
+      category: "Digital Art",
+      description: "A bold statement on personal autonomy and the power of creating your own reality, expressed through vibrant colors and dynamic composition."
+    },
+    { 
+      id: 4, 
+      title: "Stance of Flow", 
+      image: "/image/stance-of-flow.jpg", 
+      category: "Digital Art",
+      description: "This piece explores the state of flow - that perfect balance between challenge and skill where creativity flourishes and time seems to stand still."
+    },
+    { 
+      id: 5, 
+      title: "What Is That", 
+      image: "/image/what-is-that.jpg", 
+      category: "Digital Art",
+      description: "An invitation to curiosity and questioning, this work plays with perception and encourages viewers to form their own interpretations."
+    },
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[90vh] overflow-hidden bg-gradient-to-br from-purple-900 via-blue-800 to-indigo-900 flex items-center">
-        <div className="absolute inset-0 opacity-30">
-          {/* Abstract patterns inspired by Futura 2000 */}
-          <div className="absolute top-20 left-10 w-40 h-40 rounded-full bg-yellow-400 mix-blend-overlay"></div>
-          <div className="absolute bottom-40 right-20 w-60 h-60 rounded-full bg-pink-500 mix-blend-overlay"></div>
-          <div className="absolute top-1/3 right-1/3 w-80 h-80 rounded-full bg-blue-400 mix-blend-overlay"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              BORN ELDER
-            </h1>
-            <h2 className="text-2xl md:text-3xl font-light text-white/90 mb-8">
-              Creative Technologist &amp; Artist
-            </h2>
-            <p className="text-lg text-white/80 mb-10 max-w-2xl">
-              Blending technology, music, and visual art to craft engaging digital and physical experiences.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link 
-                href="/portfolio" 
-                className="px-6 py-3 bg-white text-purple-900 rounded-md font-medium hover:bg-purple-100 transition-colors flex items-center gap-2"
-              >
-                View Portfolio <FiArrowRight />
-              </Link>
-              <Link 
-                href="/contact" 
-                className="px-6 py-3 bg-transparent border-2 border-white text-white rounded-md font-medium hover:bg-white/10 transition-colors"
-              >
-                Get in Touch
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Works Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl font-bold">Featured Works</h2>
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Y2K-style header with retro gaming feel */}
+      <section className="py-16 px-4 relative overflow-hidden border-b-4 border-[#00ff44]">
+        <div className="container mx-auto">
+          <h1 className="text-6xl md:text-8xl font-bold text-center mb-4 glitch-text">BORN ELDER</h1>
+          <p className="text-xl md:text-2xl text-center text-[#00ffcc] font-mono mb-8">CREATIVE TECHNOLOGIST // DIGITAL EXPLORER</p>
+          <div className="flex justify-center space-x-8">
             <Link 
               href="/portfolio" 
-              className="flex items-center gap-2 text-purple-600 hover:text-purple-800 transition-colors"
+              className="px-8 py-3 bg-[#003366] border-2 border-[#00aaff] text-[#00ffff] rounded-md font-mono hover:bg-[#004477] transition-colors"
             >
-              View All <FiArrowRight />
+              ENTER GALLERY
+            </Link>
+            <Link 
+              href="/contact" 
+              className="px-8 py-3 bg-transparent border-2 border-[#ff00aa] text-[#ff66cc] rounded-md font-mono hover:bg-[#330033] transition-colors"
+            >
+              CONTACT
+            </Link>
+          </div>
+        </div>
+        
+        {/* Y2K-style grid background */}
+        <div className="absolute inset-0 -z-10 opacity-20 grid-bg"></div>
+      </section>
+
+      {/* Featured Works Section - 3D Virtual Gallery */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold text-[#00ffaa] font-mono border-l-4 border-[#00ffaa] pl-4">*{"}"} The 4ault {"{"} *</h2>
+            <Link 
+              href="/portfolio" 
+              className="flex items-center gap-2 text-[#00aaff] hover:text-[#00ffff] transition-colors font-mono"
+            >
+              VIEW_ALL <FiArrowRight />
             </Link>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredWorks.map((work) => (
-              <div 
-                key={work.id} 
-                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all"
-              >
-                <div className="aspect-w-3 aspect-h-2 bg-gray-100 dark:bg-gray-800">
-                  {/* Image placeholders - would be replaced with actual images */}
-                  <div className="w-full h-64 bg-gradient-to-br from-purple-500 to-blue-500 relative">
-                    <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">
-                      {work.title}
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
-                  <div className="p-6 w-full">
-                    <h3 className="text-white text-xl font-bold mb-2">{work.title}</h3>
-                    <p className="text-white/80 mb-4">{work.category}</p>
-                    <Link 
-                      href={`/portfolio/${work.id}`} 
-                      className="inline-flex items-center gap-2 text-sm text-white hover:text-purple-300 transition-colors"
-                    >
-                      View Details <FiArrowRight />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="bg-[#000022] border-2 border-[#0066aa] rounded-lg p-6 shadow-[0_0_15px_rgba(0,170,255,0.5)]">
+            <VirtualGallery artworks={featuredWorks} />
+          </div>
+          
+          <div className="mt-8 text-center text-[#00aaff] font-mono text-sm">
+            <p className="blink">[WASD OR ARROWS TO NAVIGATE THE VIRTUAL GALLERY]</p>
           </div>
         </div>
       </section>
 
-      {/* Services Overview */}
-      <section className="py-20 bg-gray-100 dark:bg-gray-800">
+      {/* Services Overview - Y2K Style */}
+      <section className="py-20 bg-[#000033]">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">What I Do</h2>
           

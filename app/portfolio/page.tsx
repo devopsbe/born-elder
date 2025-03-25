@@ -2,16 +2,17 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FiEye, FiFilter } from 'react-icons/fi';
 
 export default function PortfolioPage() {
   // This would normally be fetched from a CMS or API
   const artworks = [
-    { id: 1, title: "Homecoming", image: "/homecoming.jpg", category: "Digital Art", year: "2023" },
-    { id: 2, title: "Metaplane", image: "/metaplane.jpg", category: "Digital Art", year: "2023" },
-    { id: 3, title: "My World My Rules", image: "/my-world-my-rules.jpg", category: "Digital Art", year: "2023" },
-    { id: 4, title: "Stance of Flow", image: "/stance-of-flow.jpg", category: "Digital Art", year: "2022" },
-    { id: 5, title: "What Is That", image: "/what-is-that.jpg", category: "Digital Art", year: "2022" },
+    { id: 1, title: "Homecoming", image: "/image/homecoming.jpg", category: "Digital Art", year: "2023" },
+    { id: 2, title: "Metaplane", image: "/image/metaplane.jpg", category: "Digital Art", year: "2023" },
+    { id: 3, title: "My World My Rules", image: "/image/my-world-my-rules.jpg", category: "Digital Art", year: "2023" },
+    { id: 4, title: "Stance of Flow", image: "/image/stance-of-flow.jpg", category: "Digital Art", year: "2022" },
+    { id: 5, title: "What Is That", image: "/image/what-is-that.jpg", category: "Digital Art", year: "2022" },
   ];
   
   const categories = ["All", "Digital Art", "Traditional", "NFT", "Commissions"];
@@ -98,11 +99,15 @@ export default function PortfolioPage() {
             {filteredArtworks.length > 0 ? (
               filteredArtworks.map(artwork => (
                 <div key={artwork.id} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all">
-                  {/* In a real implementation, we would use Next.js Image component for optimized images */}
-                  <div className="w-full h-64 bg-gradient-to-br from-purple-500 to-blue-500 relative">
-                    <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">
-                      {artwork.title}
-                    </div>
+                  {/* Use Next.js Image component for optimized images */}
+                  <div className="w-full h-64 relative">
+                    <Image 
+                      src={artwork.image}
+                      alt={artwork.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
                   </div>
                   
                   <div className="p-4">
